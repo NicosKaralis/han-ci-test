@@ -7,11 +7,10 @@ before_install:
   - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD"
   - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" > ~/.netrc
   - git submodule update --init --recursive
+  - mv han-ios-app/* .
   - gem install bundler
 os: osx
 language: swift
 script:
-  - cd han-ios-app
-  - gem install bundler
   - bundle install
   - fastlane development
