@@ -1,0 +1,3 @@
+[submodule "han-ios-app"]
+	path = han-ios-app
+	url = https://nicoskaralis@bitbucket.org/anfeli/han-ios-app.git

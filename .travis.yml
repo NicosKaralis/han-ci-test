@@ -1,0 +1,9 @@
+env:
+  - BITBUCKET_USER_NAME=nicoskaralis
+  - BITBUCKET_USER_PASSWORD=GF5KnuMvjcvAUGe39xm6
+git:
+  submodules:
+    false
+before_install:
+  - echo -e "machine bitbucket.org\n  login $BITBUCKET_USER_NAME\n  password $BITBUCKET_USER_PASSWORD" > ~/.netrc
+  - git submodule update --init --recursive
