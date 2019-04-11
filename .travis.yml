@@ -1,6 +1,5 @@
 env:
-  - BITBUCKET_USER_NAME=nicoskaralis
-  - BITBUCKET_USER_PASSWORD=GF5KnuMvjcvAUGe39xm6
+  - BITBUCKET_USER_NAME=nicoskaralis BITBUCKET_USER_PASSWORD=GF5KnuMvjcvAUGe39xm6
 git:
   submodules:
     false
