@@ -1,6 +1,6 @@
 env:
   global:
-    secure: iMGc8NeoAukisjEqa7qkRUk7NEhbj2D1Rf/AyzMVO6AGZnJn5nPEJ/Igy+t+B2Py0doK7w4QpCij95dxSHXS8eeyu7bocymNmOkSGE1GlA9ifp4EekAvZL3SwLf/9EBEGOROYnJg073EeFgchzSK3EnZ2KfM3fgSLnksb+U9t9uVFsz+yyNRy91+XrW0k0unjTRiHfQV/lWCsyFBBErlTpJOFhXt4u84F/smZWPdU+ggkC7ic2gtIQHL6LY6zELxlUfXv/F95IpnRpUsXxTH4KcAAT5sOR3aedrm7HOXGCzTp6jnzZrVlAEHfTTSD2aqygzN9+bpK77lhUoFoRkaD8Xh2xQFrBdxNupvan1nsVbPH/2w/a1mcWrpE4PZRG8PiB8649tp/2If/sj4xcDYYGh5SQE9N7UfdmPLz7Myz+YhpDc+9LWbQWUvvxhIVlQqY2QCHbSSmc0LnqQnINj8iXXXJ7pVH6JxbSaGvN1dC3ZxV2v91+M3Rdgm82B/HEI1Wu/DRX7LZyL9PyVcXObbULhCjnOBsnL8q7dXv7+OXvlgVSaE5afQM0EHLo42MPeu1O2SuMdrH4W4kON01I46YfFyhPnx4NVU8soJrYI7NiaFia0ze2RiQCxvWsqPSk+HNDOup9tdhKhWbrzRiRIELI0/YwD6Hy+D11J10KuO4L8=
+    - secure: PhopgnQgfNwczM/Vk5U7Ky6unvG5rCVSXocI6N16a8XquMt2dLc84p4DZDKb6TzT8BupKAKmnficL54Z9ESwSzoUo4GEzgsWgRru5/nwi39o1rg4Cnnu2l2+QLwR26LvXhc+QIaY7DCcyRD6NY/jfNV1rpvZzeLxGmanSW6DGjOmivFEh6FyZpfFZAPfI5VVXeePmlGi+icHGfLV2LKMizriQpgTnttuEPU8auwZsqYbp8zKO544OVR4SzdqOmKluat6hBsvGtHx0/NbqSUoSLVnRZmEsLrSODwTPvIXVwq14bTDZGznc2KowzsksoomoQpwOhClUcwCnv0Gn1sSxUNM1XN9eXdqtlbj5zx7Z0HfHcFaFjQR1NuIEc5WHrlXgdQpf1Mzqcee/R3n6lO9o4BAibCWIGJqJ9EwqiVHg+8mUQvHApnnmYpiggyNTAf2Hqr83To5TThnYchqvFbJ4TMA74cN4iFVFxAOFmRm42Xb57l0Fbc9Kud1V+YXkkqQZxfHfK/mRi/pyJCwzE3OGPpFAfBhOH1rJ5EibP9I52i2cDVdnvV91Hv/Su9tcMD+uNhDQ1EIM0+KIZFAA7WKvDLyO2zMAo2WcpWag5RSLu0wr2YsVTm8Eo3Lz/xsZUS2tH+EYCnrZntCBfL6xfnoP5WO5AV531wxoo5QU2m9rYU=
 git:
   submodules: false
 before_install:
@@ -15,8 +15,8 @@ cache:
   bundler: true
   cocoapods: true
   directories:
-    - /home/travis/.rvm/
-    - $HOME/.cocoapods/
+    - "/home/travis/.rvm/"
+    - "$HOME/.cocoapods/"
 install: true
 script:
   - bundle install
