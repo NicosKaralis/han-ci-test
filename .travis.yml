@@ -11,7 +11,11 @@ before_install:
   - gem install bundler
 os: osx
 language: swift
+cache:
+  directories:
+    - $HOME/.cocoapods/
+before_script:
+  - pod repo update
 script:
   - bundle install
-  - pod repo update
   - fastlane development
