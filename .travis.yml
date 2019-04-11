@@ -9,9 +9,6 @@ before_install:
   - git submodule update --init --recursive
 os: osx
 language: swift
-xcode_project: han-ios-app/HAN.xcodeproj # path to your xcodeproj folder
-xcode_scheme: HANUITests
-xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
 podfile: han-ios-app/Podfile
 script:
   - cd han-ios-app
