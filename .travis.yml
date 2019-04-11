@@ -11,6 +11,10 @@ os: osx
 language: swift
 xcode_project: han-ios-app/HAN.xcodeproj # path to your xcodeproj folder
 xcode_scheme: HANUITests
-xcode_destination: platform=iOS Simulator,OS=11.3,name=iPhone X
+xcode_destination: platform=iOS Simulator,OS=12.2,name=iPhone X
 podfile: han-ios-app/Podfile
-install: cd han-ios-app ; bundle install ; fastlane development
+script:
+  - cd han-ios-app
+  - gem install bundler
+  - bundle install
+  - fastlane development
