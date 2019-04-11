@@ -13,4 +13,5 @@ os: osx
 language: swift
 script:
   - bundle install
+  - pod repo update
   - fastlane development
