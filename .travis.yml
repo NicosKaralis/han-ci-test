@@ -1,6 +1,6 @@
 env:
-  matrix:
-  - secure: FY6RchLKeeKtDjQOlBB/kyPQBdx7laEBFK2xGONS76s/HJ0LMxOqPUivOnhoOJYMxx6H1+ax2iaWpTbbkxAACrcQ6w1lEqMF4NQAUbzhhfiAQiuYXOo45kmwCR1fb21VNNF8rQV8Yg+QU8oAUDPoN7nDnr0i2fzXArJI3sHtRqbFWjXMrpLTl6m4rXjwl5bGGVdMcKByrS3EXdwYv2pmBVY5zW5+dJIla/ebeXMxPdc8Ib3XgVcIKhhPDGvuodG4yoyQ82NQOf+N2+NfMXkZJ21I8MkNko/RB0I7iTf1DzOARi0pWW3FZb8YOMVxSzwE95ocz2pJrLtxqX+jPkgQBfFbC4ghoI5YyVuHafmjjkKbmOW0nivG/Fgr9/s1S5UGEMal82t+7DhWWfwp9lqrz2cHzo1VQe+4sMuhpEsM75FZczKdNg/Xoukbe1dk+9jpD4II7lA9GzNRpRdqC5lSlItzi+YNRXlnd0awWoN2cOc6q8MMxltbSxAxQ15MyQVHq6E0Tz/TSSp++H8XiwsiOk6of+gmdR0rZISM3FF2jM3+OYkSneskze9vBnoXrZtUokGAJxAeZICE7YaCqU5EySFXCx9+KgfI9J0MDXwpWNzwpJwsTFHcLww1jilxslsQw7IDO6ODQF4YylmvwEw+44Tw4QdTgzkcwFEGbrnE/AQ=
+  global:
+    secure: iMGc8NeoAukisjEqa7qkRUk7NEhbj2D1Rf/AyzMVO6AGZnJn5nPEJ/Igy+t+B2Py0doK7w4QpCij95dxSHXS8eeyu7bocymNmOkSGE1GlA9ifp4EekAvZL3SwLf/9EBEGOROYnJg073EeFgchzSK3EnZ2KfM3fgSLnksb+U9t9uVFsz+yyNRy91+XrW0k0unjTRiHfQV/lWCsyFBBErlTpJOFhXt4u84F/smZWPdU+ggkC7ic2gtIQHL6LY6zELxlUfXv/F95IpnRpUsXxTH4KcAAT5sOR3aedrm7HOXGCzTp6jnzZrVlAEHfTTSD2aqygzN9+bpK77lhUoFoRkaD8Xh2xQFrBdxNupvan1nsVbPH/2w/a1mcWrpE4PZRG8PiB8649tp/2If/sj4xcDYYGh5SQE9N7UfdmPLz7Myz+YhpDc+9LWbQWUvvxhIVlQqY2QCHbSSmc0LnqQnINj8iXXXJ7pVH6JxbSaGvN1dC3ZxV2v91+M3Rdgm82B/HEI1Wu/DRX7LZyL9PyVcXObbULhCjnOBsnL8q7dXv7+OXvlgVSaE5afQM0EHLo42MPeu1O2SuMdrH4W4kON01I46YfFyhPnx4NVU8soJrYI7NiaFia0ze2RiQCxvWsqPSk+HNDOup9tdhKhWbrzRiRIELI0/YwD6Hy+D11J10KuO4L8=
 git:
   submodules: false
 before_install:
@@ -12,10 +12,13 @@ before_install:
 os: osx
 language: swift
 cache:
+  bundler: true
+  cocoapods: true
   directories:
+    - /home/travis/.rvm/
     - $HOME/.cocoapods/
 install: true
 script:
-  - bundle install
+  - bundle install --deployment
   - pod repo update
   - fastlane development
