@@ -10,7 +10,6 @@ before_install:
   - gem install bundler
 os: osx
 language: swift
-podfile: han-ios-app/Podfile
 script:
   - cd han-ios-app
   - gem install bundler
