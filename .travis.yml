@@ -15,8 +15,7 @@ cache:
   directories:
     - $HOME/.cocoapods/
 install: true
-before_script:
-  - pod repo update
 script:
   - bundle install
+  - pod repo update
   - fastlane development
