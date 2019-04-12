@@ -36,7 +36,7 @@ matrix:
   include:
     - language: android
       env:
-        - BUNDLE_GEMFILE: han-ios-android/Gemfile.lock
+        - BUNDLE_GEMFILE: han-ios-android/Gemfile
       cache:
         directories:
           - "$HOME/han-ios-android/vendor/bundle"
@@ -52,7 +52,7 @@ matrix:
     - language: objective-c
       os: osx
       env:
-        - BUNDLE_GEMFILE: han-ios-app/Gemfile.lock
+        - BUNDLE_GEMFILE: han-ios-app/Gemfile
       cache:
         directories:
           - "$HOME/han-ios-app/vendor/bundle"
