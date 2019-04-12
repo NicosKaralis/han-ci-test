@@ -37,28 +37,32 @@ matrix:
     - language: android
       env:
         - BUNDLE_GEMFILE: han-ios-android/Gemfile.lock
-      before_install:
+      cache:
+        directories:
+          - "$HOME/han-ios-android/vendor/bundle"
+      install:
         - rvm install 2.5.3
         - rvm use 2.5.3
         - gem install bundler
         - bundle install --deployment --binstubs --gemfile=$BUNDLE_GEMFILE
         - echo "Install Android depentencies"
         - han-ios-android/bin/fastlane -v
-        - bin/fastlane -v
       script:
         - echo "Build Android app with fastlane"
     - language: objective-c
       os: osx
       env:
         - BUNDLE_GEMFILE: han-ios-app/Gemfile.lock
-      before_install:
+      cache:
+        directories:
+          - "$HOME/han-ios-app/vendor/bundle"
+      install:
         - rvm install 2.5.3
         - rvm use 2.5.3
         - gem install bundler
         - bundle install --deployment --binstubs --gemfile=$BUNDLE_GEMFILE
         - echo "Install iOS depentencies"
         - han-ios-app/bin/fastlane -v
-        - bin/fastlane -v
       script:
         - echo "Build iOS app with fastlane"
 
