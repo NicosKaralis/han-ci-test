@@ -28,5 +28,5 @@ cache:
 install: true
 script:
   - bundle install --deployment
-  - pod repo update
-  - fastlane development
+  - bundle exec pod repo update
+  - bundle exec fastlane development
