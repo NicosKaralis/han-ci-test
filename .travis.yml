@@ -1,5 +1,6 @@
 env:
   global:
+    - name: BITBUCKET_USER_NAME
     - secure: duCf4j0NVm/JdYCOa5PsX7MUBncl326iiMXPG7eOSSSgzYDxsV+7f8O43Ui6KeDLJT29dEU+fTe5ege49skGjWrDiXLbYShxxMd1DJx/ulPxynvrm90O07UHltPlMYl9HztwGqkB0p6WlN4yHiUf2tAYS6u5a5UWYbbrQvjIa3LlHlYfnqoC1fbneBn44cL/j79ukSQrGoyNSsvqbBMOkVsrIixTaHeWNumP75Kv5z9cWRUOtuY507bQA9Aj8sYvrKRAjXTB+ey4tyb1aD2u6JYStFsKC4133W91kttc+D3YHfpWdEwe14R7/XPL2n+euzRQhVr4miR+F/1pXSoAvqPlPWi9KhXlhlHas7JRL40SeGmOuERX+lyFz4kG72rE/eRTJLxEpHB16BdW30fENpUZ0zCQuiSORdmigD4glowxtf6vX7KcKlHvtw3X2axjTFzPKAbL60v1t4HgE9eL2ZW2pTYnik/GT3zMA3xLYSxOUW4x0dAlOtskLEf1fFfMVZkg+mJflp2LfYgwIh/Ddn1HQZYbYoyx4kgG6LXRvKU1ZQFWSbjNYZUm/g5pReBp3+cR1ZOZiIkk2YaUpcrtlFazOj2ieXD21OBo0m5GaEyzrPaU7ZyiOBzMt9olTILmjxTfnIlUJQJr1yo2Jzf3hKEFpRTmeJYFtGqs+bJQKrA= # BITBUCKET_USER_NAME
     - name: BITBUCKET_USER_PASSWORD
     - secure: jwnuTcfHyjjJkEtRDBAVua68bt1Tygtw6qy4Qkf1hB5lq04ehvBVEqH+oAjdjl+wNqmyeGkt8E7wdAs3K+3eURbHlxBO/1hQyf2VZZz0JwTJyl/dt3eBuinHq5ZoUaKO69+rvp2AB8MIM8C0yWAW7xsq6OZqSX0SBUaLiQ8iMfueJjARFXHj04i8HMtjneHQopwL4jPpfYj4Zk7oNVSzkhpP3TZN8BkJCx2Ta4vPZfddPj5iRP4gNKuwnvyQK7ZbudY976UDTwc/o9vM9gSOyl/paY+tlvU9n0cWqu+6gg6h4cP9/Gtm5nHtHciSF72E2srlXJty2yY49JmEQfY4tlOToyZtXlWR36LHsk3ztH51Bun8UG6oo8UHhEIqWpPcU2UyAz5nhfuar33kMLINdbrISYFHtf2K6n2gadViCtCWaffXBzLoDKtmZfcd1zghMBxkpvwWuNAwv3CdFlXPQ3SSlnNCj7Yyzwd8w5PknJfAODthpIwxjhNKS2DgC7iYMMeixu9zj3oHhcBA50DpFB5xa5LajKahAUDy3HfniD428zVos45f1GYXNCCFkjbMMHdUMpgb8/JiSyZsW7F6x89AZOqxVJ72WcJzBWH5JIvtji4/J1ypN4e8psLtcYffBj2UN+yMHr/JbfnsjTizEj/OpAlcgKz2zwbeGlXBDJU= # BITBUCKET_USER_PASSWORD
@@ -14,6 +15,7 @@ before_install:
       password $BITBUCKET_USER_PASSWORD" > ~/.netrc
   - git submodule update --init --recursive
   - mv han-ios-app/* .
+  - echo -e "FASTLANE_PASSWORD=$FASTLANE_PASSWORD" > ~/.env
   - gem install bundler
 os: osx
 language: swift
@@ -21,10 +23,10 @@ cache:
   bundler: true
   cocoapods: true
   directories:
-    - "/home/travis/.rvm/"
+    - "$HOME/.rvm/"
     - "$HOME/.cocoapods/"
 install: true
 script:
-  - bundle install
+  - bundle install --deployment
   - pod repo update
   - fastlane development
