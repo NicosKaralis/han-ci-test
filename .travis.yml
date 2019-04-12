@@ -14,19 +14,35 @@ before_install:
       login $BITBUCKET_USER_NAME
       password $BITBUCKET_USER_PASSWORD" > ~/.netrc
   - git submodule update --init --recursive
-  - mv han-ios-app/* .
-  - echo -e "FASTLANE_PASSWORD=$FASTLANE_PASSWORD" > ~/.env
-  - gem install bundler
-os: osx
-language: swift
+  # - mv han-ios-app/* .
+  # - echo -e "FASTLANE_PASSWORD=$FASTLANE_PASSWORD" > ~/.env
+  # - gem install bundler
 cache:
   bundler: true
   cocoapods: true
   directories:
     - "$HOME/.rvm/"
-    - "$HOME/.cocoapods/"
+    # - "$HOME/.cocoapods/"
 install: true
-script:
-  - bundle install --deployment
-  - bundle exec pod repo update
-  - bundle exec fastlane development
+# script:
+#   - bundle install --deployment
+#   - bundle exec pod repo update
+#   - bundle exec fastlane development
+
+language: generic
+os: linux
+
+matrix:
+  include:
+    - language: android
+      before_install:
+        - echo "Install Android depentencies"
+      script:
+        - echo "Build Android app with fastlane"
+    - language: swift
+      os: osx
+      before_install:
+        - echo "Install iOS depentencies"
+      script:
+        - echo "Build iOS app with fastlane"
+
