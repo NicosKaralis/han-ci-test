@@ -64,6 +64,7 @@ matrix:
         - bundle install --deployment --binstubs --gemfile=$BUNDLE_GEMFILE
         - echo "Install iOS depentencies"
         - han-ios-app/bin/fastlane -v
+        - han-ios-app/bin/fastlane development
       script:
         - echo "Build iOS app with fastlane"
 
