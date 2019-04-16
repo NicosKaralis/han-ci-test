@@ -6,6 +6,8 @@ env:
     - secure: jwnuTcfHyjjJkEtRDBAVua68bt1Tygtw6qy4Qkf1hB5lq04ehvBVEqH+oAjdjl+wNqmyeGkt8E7wdAs3K+3eURbHlxBO/1hQyf2VZZz0JwTJyl/dt3eBuinHq5ZoUaKO69+rvp2AB8MIM8C0yWAW7xsq6OZqSX0SBUaLiQ8iMfueJjARFXHj04i8HMtjneHQopwL4jPpfYj4Zk7oNVSzkhpP3TZN8BkJCx2Ta4vPZfddPj5iRP4gNKuwnvyQK7ZbudY976UDTwc/o9vM9gSOyl/paY+tlvU9n0cWqu+6gg6h4cP9/Gtm5nHtHciSF72E2srlXJty2yY49JmEQfY4tlOToyZtXlWR36LHsk3ztH51Bun8UG6oo8UHhEIqWpPcU2UyAz5nhfuar33kMLINdbrISYFHtf2K6n2gadViCtCWaffXBzLoDKtmZfcd1zghMBxkpvwWuNAwv3CdFlXPQ3SSlnNCj7Yyzwd8w5PknJfAODthpIwxjhNKS2DgC7iYMMeixu9zj3oHhcBA50DpFB5xa5LajKahAUDy3HfniD428zVos45f1GYXNCCFkjbMMHdUMpgb8/JiSyZsW7F6x89AZOqxVJ72WcJzBWH5JIvtji4/J1ypN4e8psLtcYffBj2UN+yMHr/JbfnsjTizEj/OpAlcgKz2zwbeGlXBDJU= # BITBUCKET_USER_PASSWORD
     - name: FASTLANE_PASSWORD
     - secure: CglZmVTRiZsd6Ugpp777jd6dG+BDsDCbWIVth7852XKxNscu7UZmKfvrQ0ZcLN/jwpAnACwGRx93fcA2DgffAaZO+t65/YY8Xma4ybITrG+xwG5BhQVuA7GnH1oD8xbDoMiovS4muh35reKUqioipoey5lTkq4ZpnnX1MulFgA48Sum8lKOlh3U4al5p084Hs19TzoZWm64tIel6Ap8RXvfPFXkyNl2JNM+y+gyQoCQx16h4JRaNmX3SLrqFIQTxFxaheZxMvIo0EIu6vbdYV2MGFIXGjNmGYik16i8FefG0hdyxiclXdeQkxMOfwd/H34C/Z6A2XVk6PDeJE07AYSHEpO3C0btb1ggHlO3Izz2UCY2E/vKDqPGWqwRaR/X1LX/T+137as3MSC+1uB7aZo9DzYRWw2bk6xg6Xuu1lrq4+YgjCHy2Z/Jhj5b8Y913e9nD0grELkIyeOQheFXapPuBG7kzC7Q9K6DoUW7kVhKMXVWUlGAWywUIMaJMOe9Dj+vaVOFgCX9W7LAtQS1Adjzhe+0ifVFiKh57HoSICfg2yagwfljqMcax2VmP9HtkWNpnP3sX9oTHg5VoCuy168Qn1M1hdSbUxKOp1q5eUJ3oLiDoN0Hqlkk+iTAsEeGupHryJ0Fm2o8vJLDLIy4MDQQ3pClAh++Bq47T+wmoHuk= # FASTLANE_PASSWORD
+    - name: BITBUCKET_BUILD_AUTH
+    - secure: Kl+aaFeUSDMtRL3bU66P3ol/bKwhwOVZ6Q8YYcz6OUcqtsw+O27jis7XK3n8bVTmKbxwPEU5HZKESMgi3I4YzAlv8//S7wATJN1whK9HL9A0+XSyWQjsNqz3jyjGesXFQJ+EcSpMIAMG1MpyDrr91M5g0WMnloPO3+7PcCK78lkCfkh7jtEPsKHQCkpWWLe+a913W+In/EcujzkR2T/tLE4HKzEMn3XO++MSrf2ey7vYUJFF1WAWBKAf107t1KGB2DspxfRsMWT2oRRa1dkxFF/VDdD0tf34AYijH4c1Oc0WxH8faZpPsw+4BtgbcOQws4g7+GAqdQUutW5cfQVyi6N7I0ZfUYai0PZvZIZ+hsfIUc1bPOGya7U6k0nkt1agoSbWU8XGhnvrvYt/nuQNSfboJLMC2vTBiwMegt09kePACSOMFsLe9RJoDCbWUW4GSU58ThXokC96Hl6KoVI2XZqdpHwE+XOZDe3byscittEg2dJStDOHQZwwYAfwiic9J2YM3dr2ZxuOlLzMNPcllZD6SJv+9RU+eJ/PpuJ8R24mfjnljFTW9wP4E1iK9lnFfKlDUMN4fWMx8xBmggOSPGFwWv/aU8s0r30YpwR2T298UftwUfIHQNzkIMQtmoPbwuLIGR9tFeL/h+N5qBzdjqAcQsJUAdHPQFjKXR29boQ= # BITBUCKET_BUILD_AUTH
 git:
   submodules: false
 before_install:
@@ -57,6 +59,8 @@ matrix:
       cache:
         directories:
           - "$HOME/han-ios-app/vendor/bundle"
+      before_install:
+        - ./build-start.sh $BITBUCKET_BUILD_AUTH $(git rev-parse HEAD) $TRAVIS_JOB_WEB_URL
       install:
         - rvm install 2.5.3
         - rvm use 2.5.3
@@ -64,7 +68,10 @@ matrix:
         - bundle install --deployment --binstubs --gemfile=$BUNDLE_GEMFILE
         - echo "Install iOS depentencies"
         - han-ios-app/bin/fastlane -v
-        - han-ios-app/bin/fastlane development
+        - cd han-ios-app ; ./bin/fastlane development
       script:
         - echo "Build iOS app with fastlane"
-
+      after_success:
+        - ./build-end.sh $BITBUCKET_BUILD_AUTH $TRAVIS_TEST_RESULT $(git rev-parse HEAD) $TRAVIS_JOB_WEB_URL
+      after_failure:
+        - ./build-end.sh $BITBUCKET_BUILD_AUTH $TRAVIS_TEST_RESULT $(git rev-parse HEAD) $TRAVIS_JOB_WEB_URL
