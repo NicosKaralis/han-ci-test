@@ -83,10 +83,10 @@ matrix:
         - echo "Install iOS depentencies"
         - $TRAVIS_BUILD_DIR/han-ios-app/bin/fastlane -v
         - cd $TRAVIS_BUILD_DIR/han-ios-app
-        - BUNDLE_GEMFILE=./Gemfile ./bin/fastlane development --verbose
+        - BUNDLE_GEMFILE=./Gemfile ./bin/fastlane development # --verbose
       script:
         - echo "Build iOS app with fastlane"
         - cd $TRAVIS_BUILD_DIR/han-ios-app
-        - BUNDLE_GEMFILE=./Gemfile ./bin/fastlane snap --verbose
+        - BUNDLE_GEMFILE=./Gemfile ./bin/fastlane snap # --verbose
       after_script:
         - $TRAVIS_BUILD_DIR/build-end.sh $BITBUCKET_BUILD_AUTH $TRAVIS_TEST_RESULT $(cd $TRAVIS_BUILD_DIR/han-ios-app ; git rev-parse HEAD) $TRAVIS_JOB_WEB_URL
