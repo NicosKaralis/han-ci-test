@@ -51,6 +51,7 @@ matrix:
         - echo "Build Android app with fastlane"
     - language: objective-c
       os: osx
+      osx_image: xcode10.2
       env:
         - BUNDLE_GEMFILE: han-ios-app/Gemfile
       cache:
