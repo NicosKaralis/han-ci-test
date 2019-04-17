@@ -44,7 +44,7 @@ matrix:
       env:
         - BUNDLE_GEMFILE: han-ios-app/Gemfile
       cache:
-        bundler: true
+        # bundler: true
         cocoapods: true
         directories:
           - "$HOME/.rvm/"
